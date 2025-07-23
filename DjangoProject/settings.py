@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Inventory',
     'Frontend',
     'bootstrap5',
+    'OrderManagement',
 ]
 
 MIDDLEWARE = [

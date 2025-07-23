@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<a href="/order_management/add_customers/">
+    <button style="margin-left:20px auto;">Add New Customer</button>
+</a>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Since</th>
+            <th>update Customer</th>
+            <th>Delete Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in all_customers %}
+        <tr>
+            <td>{{customer.customer_name}}</td>
+            <td>{{customer.customer_since}}</td>
+            <td>
+                <a href="">
+                    <button class="">Update</button>
+                </a>
+            </td>
+            <td>
+                <a href="">
+                    <button class="">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

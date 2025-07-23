@@ -46,3 +46,4 @@ def update_product(request,id):
     }
 
     return render(request,'add_products.html',Context)
+
