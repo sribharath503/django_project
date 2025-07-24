@@ -22,12 +22,12 @@
             <td>{{customer.customer_name}}</td>
             <td>{{customer.customer_since}}</td>
             <td>
-                <a href="">
+                <a href="{% url 'update_customers' customer.id %}">
                     <button class="">Update</button>
                 </a>
             </td>
             <td>
-                <a href="">
+                <a href="{% url 'delete_customers' customer.id %}">
                     <button class="">Delete</button>
                 </a>
             </td>
