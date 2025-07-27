@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a href="/inventory/add_products/">
-    <button>Add new product</button>
-</a>
 
+<div style="width: 80%; margin: 0 auto;">
 <table>
     <thead>
-        <tr>
+        <tr class="text-dark">
             <th>product name</th>
             <th>product code</th>
             <th>price</th>
@@ -25,12 +23,12 @@
             <td>{{ product.gst }}</td>
             <td>
                 <a href="{% url 'update_product' product.id %}">
-                    <button class="">update</button>
+                    <button class="btn btn-primary">update</button>
                 </a>
             </td>
             <td>
                 <a href="{% url 'delete_product' product.id %}">
-                    <button class="">Delete</button>
+                    <button class="btn btn-danger">Delete</button>
                 </a>
             </td>
             
@@ -38,6 +36,12 @@
         {% endfor %}
     </tbody>
 </table>
+
+<div class="d-flex justify-content-end mt-3">
+    <a href="/inventory/add_products/" class="btn btn-primary">ADD PRODUCTS</a>
+</div>
+
+</div>
 
 
 {% endblock %}

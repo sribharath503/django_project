@@ -1,0 +1,8 @@
+.text_style{
+    color: white;
+}
+.bg_design{
+    background-image: url("../assets/images/pexels-mccutcheon-1148521.jpg");
+    
+    background-size: cover;
+}

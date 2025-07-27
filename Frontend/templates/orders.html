@@ -1,49 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a href="/order_management/add_orders/">
-    <button >Add new order</button>
-</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>customer</th>
-            <th>product</th>
-            <th>order_number</th>
-            <th>order_date</th>
-            <th>quantity</th>
-            <th>amount</th>
-            <th>gst_amount</th>
-            <th>total_price</th>
-            <th>update</th>
-            <th>delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for order in all_orders %}
-        <tr>
-            <td>{{order.customer}}</td>
-            <td>{{order.product}}</td>
-            <td>{{order.order_number}}</td>
-            <td>{{order.order_date}}</td>
-            <td>{{order.quantity}}</td>
-            <td>{{order.amount}}</td>
-            <td>{{order.gst_amount}}</td>
-            <td>{{order.total_price}}</td>
-            <td>
-                <a href="{% url 'update_order' order.id %}">
-                    <button>update</button>
-                </a>
-            </td>
-            <td>
-                <a href="{% url 'delete_order' order.id %}">
-                    <button>delete</button>
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div style="width: 80%; margin: 0 auto;">
+    <table>
+        <thead>
+            <tr class="text-dark">
+                <th>customer</th>
+                <th>product</th>
+                <th>order_number</th>
+                <th>order_date</th>
+                <th>quantity</th>
+                <th>amount</th>
+                <th>gst_amount</th>
+                <th>total_price</th>
+                <th>update</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in all_orders %}
+            <tr>
+                <td>{{order.customer}}</td>
+                <td>{{order.product}}</td>
+                <td>{{order.order_number}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.gst_amount}}</td>
+                <td>{{order.total_price}}</td>
+                <td>
+                    <a href="{% url 'update_order' order.id %}">
+                        <button class="btn btn-primary">update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_order' order.id %}">
+                        <button class="btn btn-danger">delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end mt-3">
+        <a href="/order_management/add_orders/" class="btn btn-primary">ADD ORDERS</a>
+    </div>
+
+</div>
 
 {% endblock %}
