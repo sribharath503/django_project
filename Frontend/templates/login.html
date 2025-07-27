@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +10,16 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
 
 </head>
-<body class="bg-light">
+<body class="bg-light bg_design">
 
     <div class="container">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-md-4">
-                <div class="card shadow p-4 rounded-4">
+                <div class="card shadow p-4 rounded-4 ">
                     <h3 class="text-center mb-4">Login</h3>
                     <form method="POST">
                         {% csrf_token %}
