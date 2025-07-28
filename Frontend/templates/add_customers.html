@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>add customers</h1>
+<div class="d-flex flex-row justify-content-center mt-3">
+    <h1>Add Customers</h1>
+</div>
 
-<form method='POST'>
-    {% csrf_token %}
-    {{customer_form}}
-    <input type="submit" value="add customer">
-
-</form>
-
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %}
+        {{customer_form}}
+        <br/>
+        <div class="d-flex flex-row justify-content-end ">
+            <input class="btn btn-success" type="submit" value="add customer">
+        </div>
+    </form>
+</div>
 {% endblock %}
