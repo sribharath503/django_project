@@ -58,7 +58,7 @@ class add_product_view(View):
 
 
     def post(self,request):
-        form= product_form(request.POST)
+        form= product_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/inventory/view_products/')
@@ -102,7 +102,7 @@ class update_product_view(View):
 
         selected_product=products.objects.get(id=id)
         
-        form=product_form(request.POST, instance=selected_product)
+        form=product_form(request.POST, request.FILES, instance=selected_product )
         if form.is_valid():
             form.save()
             return redirect('/inventory/view_products/')

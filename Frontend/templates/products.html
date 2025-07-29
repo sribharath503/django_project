@@ -10,6 +10,7 @@
             <th>product code</th>
             <th>price</th>
             <th>gst</th>
+            <th>picture</th>
             <th>delete</th>
             <th>update</th>
         </tr>
@@ -21,6 +22,14 @@
             <td>{{ product.product_code }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.gst }}</td>
+            <td>
+                {% if product.picture %}
+                    <img src="{{ product.picture.url }}" alt="" width="100px" height="100px">
+                {% else %}
+                    No Picture
+                {% endif %}
+
+            </td>
             <td>
                 <a href="{% url 'update_product' product.id %}">
                     <button class="btn btn-primary">update</button>
