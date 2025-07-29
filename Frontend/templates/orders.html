@@ -14,8 +14,10 @@
                 <th>amount</th>
                 <th>gst_amount</th>
                 <th>total_price</th>
+                {% if request.user.role == 0 or request.user.role == 1 %}
                 <th>update</th>
                 <th>delete</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -29,6 +31,9 @@
                 <td>{{order.amount}}</td>
                 <td>{{order.gst_amount}}</td>
                 <td>{{order.total_price}}</td>
+
+                {% if request.user.role == 0 or request.user.role == 1 %}
+
                 <td>
                     <a href="{% url 'update_order' order.id %}">
                         <button class="btn btn-primary">update</button>
@@ -39,14 +44,21 @@
                         <button class="btn btn-danger">delete</button>
                     </a>
                 </td>
+
+                {% endif %}
+
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    {% if request.user.role == 0 or request.user.role == 1 %}
+
     <div class="d-flex justify-content-end mt-3">
         <a href="/order_management/add_orders/" class="btn btn-primary">ADD ORDERS</a>
     </div>
+
+    {% endif %}
 
 </div>
 

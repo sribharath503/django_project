@@ -44,6 +44,7 @@ def user_register(request):
                                         last_name=request.POST['lastname'],
                                         email=request.POST['email'],
                                         age=request.POST['age'],
+                                        role=request.POST['role'],
                                         password=request.POST['password1']
                                         )
                 return redirect('/')
