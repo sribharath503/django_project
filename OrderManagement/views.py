@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import *
 from .models import *
 from django.views import View
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 '''def add_customers(request):
     if request.method == 'POST':
@@ -48,7 +48,8 @@ from django.views import View
     return render(request,'add_customers.html',context) '''
 
 
-class add_customer_view(View):
+class add_customer_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         form=customer_form()
@@ -68,7 +69,8 @@ class add_customer_view(View):
         }
         return render(request, 'add_customers.html', context)
         
-class view_customer_view(View):
+class view_customer_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         selected_customers=customers.objects.all()
@@ -77,14 +79,16 @@ class view_customer_view(View):
         }
         return render(request,'customers.html',context)
     
-class delete_customer_view(View):
+class delete_customer_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request,id):
         selected_customer=customers.objects.get(id=id)
         selected_customer.delete()
         return redirect('/order_management/view_customers/')
 
-class update_customer_view(View):
+class update_customer_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request,id):
         selected_customer=customers.objects.get(id=id)
@@ -188,7 +192,8 @@ class update_customer_view(View):
     return render(request,'add_orders.html',context)
 '''
 
-class add_order_view(View):
+class add_order_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         
@@ -228,7 +233,8 @@ class add_order_view(View):
 
         return render(request,'add_orders.html',context)
     
-class view_order_view(View):
+class view_order_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         selected_orders=orders.objects.all()
@@ -239,14 +245,16 @@ class view_order_view(View):
 
         return render(request,'orders.html',context)
 
-class delete_order_view(View):
+class delete_order_view(LoginRequiredMixin,View):
+    login_url='/'
     
     def get(self,request,id):
         selected_order=orders.objects.get(id=id)
         selected_order.delete()
         return redirect('/order_management/view_orders/')
     
-class update_order_view(View):
+class update_order_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request,id):
         

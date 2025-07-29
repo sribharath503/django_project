@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/')
 def home(request):
     return render(request, 'home.html')
 
@@ -48,7 +51,8 @@ def home(request):
     return render(request,'add_products.html',Context)
 '''
 
-class add_product_view(View):
+class add_product_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         context = {
@@ -64,7 +68,8 @@ class add_product_view(View):
             return redirect('/inventory/view_products/')
 
 
-class view_product_view(View):
+class view_product_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request):
         selected_products = products.objects.all()
@@ -75,7 +80,8 @@ class view_product_view(View):
         return render(request, 'products.html',context)
     
 
-class delete_product_view(View):
+class delete_product_view(LoginRequiredMixin,View):
+    login_url='/'
 
     def get(self,request,id):
         selected_product=products.objects.get(id=id)
@@ -83,8 +89,8 @@ class delete_product_view(View):
         return redirect('/inventory/view_products/')
 
 
-class update_product_view(View):
-
+class update_product_view(LoginRequiredMixin,View):
+    login_url='/'
     
 
     def get(self,request,id):
