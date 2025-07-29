@@ -5,6 +5,9 @@ from .models import *
 # Create your views here.
 
 def user_login(request):
+
+    if request.user.is_authenticated:
+        return redirect('/inventory/home/')
     
     if request.method == 'POST':
         user=authenticate(request,username=request.POST["username"],password=request.POST["password"])
